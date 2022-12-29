@@ -1,0 +1,78 @@
+// B210970023 G.Tuguldur
+package lab1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import dataStructures.ArrayLinearList;
+
+public class MyArrayLinearList extends ArrayLinearList {
+	public Object max() {
+		Object a = new Object();
+		a = this.get(0);
+		for(int i =1; i<this.size(); i++)
+			if((int) a < (int) this.get(i)) {
+				a = this.get(i);
+			}
+		return a;
+	}
+	public Object min() {
+		Object a = new Object();
+		a = this.get(0);
+		for(int i =1; i<this.size(); i++)
+			if((int) a > (int) this.get(i)) {
+				a = this.get(i);
+			}
+		return a;
+	}
+	public int sum() {
+		int b = 0;
+		for(int i=0; i<this.size(); i++)
+			b = b + (int) get(i);
+		return b;
+		
+	}
+	public double average() {
+		return 1.0*sum()/size();
+	}
+	
+	public Object removeOdd() {
+		int x = 0;
+		for(int i = 0; i < this.size() ; i++)
+			if((int) get(i) % 2 == 1) {
+				remove(i) ;
+				i--;
+			}
+		return x;
+	}
+	public void Bubblesort() {
+		Object k;
+		for(int pass=0; pass < this.size();pass++) {
+			for(int j=pass + 1; j < this.size();j++)
+				if((int) get(pass) > (int) get(j)) {
+					k=get(pass);
+					element[pass] = element[j];
+					element[j]=k;
+				}
+		}
+	}
+	public static void main(String arg[]) {
+		
+		MyArrayLinearList x = new MyArrayLinearList();
+			x.add(0, new Integer(2));
+			x.add(1, new Integer(6));
+			x.add(2, new Integer(1));
+			x.add(3, new Integer(4));
+		
+		System.out.println("lab1");
+		System.out.println("max is:" + (int) x.max());
+		System.out.println("min is:" + (int) x.min());
+		System.out.println("sum is:" + (int) x.sum());
+		System.out.println("average is:" + (double) x.average());
+		x.removeOdd();
+		System.out.println("Remove odd " +x.toString());
+		x.Bubblesort();
+		System.out.println("Bubble sort:"+x.toString());
+	} 
+}
+
